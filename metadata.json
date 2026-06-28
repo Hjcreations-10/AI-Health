@@ -1,0 +1,6 @@
+{
+  "name": "AI Health Companion",
+  "description": "A universal AI-powered connected healthcare ecosystem for elderly care, featuring a Universal AI Health Card, Patient Mobile App, Smartwatch Companion, Hospital & Pharmacy Portals, and a Caregiver Dashboard.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
