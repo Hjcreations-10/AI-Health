@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vercel dev",
-    "dev:vite": "vite",
+    "dev": "vite",
+    
     "build": "vite build",
-    "start": "vercel dev",
+    "preview": "vite preview",
+    
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"
   },
@@ -31,7 +32,10 @@
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
-    "vercel": "^54.18.1",
     "vite": "^6.2.3"
   }
 }
+
+
+
+

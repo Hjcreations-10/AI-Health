@@ -218,7 +218,6 @@ export default function Smartwatch({
     }
   };
 
-  const isEmergencyActive = patient.vitals.isEmergencyTriggered || patient.vitals.isFallDetected;
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-8" id="smartwatch-viewport">
       
@@ -229,7 +228,7 @@ export default function Smartwatch({
         </h3>
 
         {/* Real Smartwatch Outer Frame */}
-        <div className={`relative w-80 h-96 bg-slate-900 rounded-[50px] shadow-2xl border-[12px] border-slate-800 flex flex-col items-center justify-center p-3 overflow-hidden ring-4 transition-all duration-500 ${isEmergencyActive ? 'ring-rose-500/80 glow-red animate-pulse' : 'ring-slate-700/50 glow-blue'}`} id="watch-hardware-frame">
+        <div className="relative w-80 h-96 bg-slate-900 rounded-[50px] shadow-2xl border-[12px] border-slate-800 flex flex-col items-center justify-center p-3 overflow-hidden ring-4 ring-slate-700/50" id="watch-hardware-frame">
           
           {/* Watch Glass glare overlay */}
           <div className="absolute top-0 left-0 w-full h-full bg-linear-to-tr from-white/0 via-white/5 to-white/10 pointer-events-none rounded-[36px]" />
@@ -452,7 +451,7 @@ export default function Smartwatch({
       <div className="lg:col-span-7 space-y-6">
         
         {/* Hardware / Sensor Controls simulation panel */}
-        <div className="bg-white/80 backdrop-blur-md rounded-[32px] border border-slate-100/80 shadow-premium p-6 space-y-6 hover-lift" id="watch-sensors-controls">
+        <div className="bg-white rounded-[32px] border border-slate-100 shadow-xl shadow-slate-200/50 p-6 space-y-6" id="watch-sensors-controls">
           <div>
             <h3 className="font-display font-bold text-lg text-slate-800">Smartwatch Sensor Controls</h3>
             <p className="text-xs text-slate-500 mt-0.5">
@@ -463,7 +462,7 @@ export default function Smartwatch({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             
             {/* Fall Simulator Trigger */}
-            <div className="p-4 bg-slate-50/50 backdrop-blur-xs rounded-xl border border-slate-200/80 space-y-3 hover-lift shadow-xs">
+            <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
               <div className="flex items-center space-x-2 text-rose-600 font-bold text-sm">
                 <AlertOctagon className="h-4.5 w-4.5" />
                 <span>Simulate Fall Event</span>
@@ -479,7 +478,7 @@ export default function Smartwatch({
                 className={`w-full py-2.5 rounded-xl text-xs font-bold shadow-xs transition-all cursor-pointer flex items-center justify-center space-x-1.5 ${
                   patient.vitals.isFallDetected
                     ? 'bg-slate-200 text-slate-400 border-0 cursor-not-allowed'
-                    : 'bg-rose-600 hover:bg-rose-700 text-white shadow-premium glow-red'
+                    : 'bg-rose-600 hover:bg-rose-700 text-white'
                 }`}
                 id="sensor-trigger-fall-btn"
               >
@@ -488,7 +487,7 @@ export default function Smartwatch({
             </div>
 
             {/* Abnormal Heart rate simulator */}
-            <div className="p-4 bg-slate-50/50 backdrop-blur-xs rounded-xl border border-slate-200/80 space-y-3 hover-lift shadow-xs">
+            <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
               <div className="flex items-center space-x-2 text-blue-600 font-bold text-sm">
                 <Heart className="h-4.5 w-4.5" />
                 <span>Simulate Vitals Drift</span>
@@ -502,7 +501,7 @@ export default function Smartwatch({
                     setSimulatedHeartRate(118);
                     setSimulatedSpO2(91); // Force bad vitals
                   }}
-                  className="py-2 bg-blue-50/80 border border-blue-200/60 hover:bg-blue-100 text-blue-700 rounded-lg text-xs font-bold cursor-pointer transition-all hover-lift"
+                  className="py-2 bg-blue-50 border border-blue-200 hover:bg-blue-100 text-blue-700 rounded-lg text-xs font-bold cursor-pointer"
                   id="vitals-drift-cardiac"
                 >
                   Cardiac Spike (118)
@@ -512,7 +511,7 @@ export default function Smartwatch({
                     setSimulatedHeartRate(71);
                     setSimulatedSpO2(98); // Restore normal
                   }}
-                  className="py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold cursor-pointer transition-all hover-lift"
+                  className="py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold cursor-pointer"
                   id="vitals-drift-normal"
                 >
                   Restore Normal

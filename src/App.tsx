@@ -182,15 +182,27 @@ export default function App() {
 
   if (isLoading && !patient) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 space-y-4" id="ecosystem-loading">
-        <div className="relative h-16 w-16 flex items-center justify-center">
-          <span className="absolute inset-0 h-full w-full rounded-full border-4 border-slate-200" />
-          <span className="absolute inset-0 h-full w-full rounded-full border-4 border-indigo-600 border-t-transparent animate-spin" />
-          <Activity className="h-6 w-6 text-indigo-600 absolute animate-heartbeat" />
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 space-y-8 bg-dots-pattern" id="ecosystem-loading">
+        <div className="relative flex items-center justify-center">
+          {/* Outer rings */}
+          <span className="absolute h-32 w-32 rounded-full border border-indigo-500/20 animate-ring-expand" />
+          <span className="absolute h-24 w-24 rounded-full border border-indigo-500/30 animate-ring-expand delay-300" />
+          {/* Spinner */}
+          <span className="absolute h-20 w-20 rounded-full border-2 border-indigo-900/50" />
+          <span className="absolute h-20 w-20 rounded-full border-2 border-transparent border-t-indigo-500 animate-spin" />
+          {/* Logo center */}
+          <div className="relative h-14 w-14 bg-gradient-to-tr from-indigo-600 to-rose-500 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/40">
+            <Activity className="h-7 w-7 text-white animate-heartbeat" />
+          </div>
         </div>
-        <div className="text-center">
-          <h2 className="text-sm font-bold text-slate-800 font-display">Synchronizing Healthcare Ecosystem...</h2>
-          <p className="text-[11px] text-slate-500 font-mono tracking-wider uppercase mt-1">Connecting Patient Nodes, Wearables, and Clinic Terminals</p>
+        <div className="text-center space-y-2 animate-fade-in">
+          <h2 className="text-lg font-bold font-display text-white">AI Health <span className="text-gradient-health">Companion</span></h2>
+          <p className="text-[11px] text-slate-400 font-mono tracking-[0.2em] uppercase">Synchronizing Healthcare Ecosystem...</p>
+          <div className="flex items-center justify-center space-x-1.5 pt-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-indigo-400 typing-dot-1" />
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-400 typing-dot-2" />
+            <span className="h-1.5 w-1.5 rounded-full bg-rose-400 typing-dot-3" />
+          </div>
         </div>
       </div>
     );
@@ -198,16 +210,19 @@ export default function App() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 p-6 text-center space-y-4" id="ecosystem-error">
-        <ShieldAlert className="h-14 w-14 text-rose-500 animate-bounce" />
-        <h2 className="text-lg font-bold text-slate-800 font-display">{error}</h2>
-        <button
-          onClick={fetchEcosystemData}
-          className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold shadow-sm cursor-pointer transition-all flex items-center space-x-1.5"
-        >
-          <RefreshCw className="h-4 w-4" />
-          <span>Retry Server Synchronization</span>
-        </button>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-950 via-rose-950/30 to-slate-900 p-6 text-center space-y-6" id="ecosystem-error">
+        <div className="glass-dark rounded-3xl p-10 space-y-5 max-w-md animate-fade-in border border-rose-500/20">
+          <ShieldAlert className="h-14 w-14 text-rose-400 mx-auto animate-bounce" />
+          <h2 className="text-lg font-bold text-white font-display">Connection Error</h2>
+          <p className="text-sm text-slate-400">{error}</p>
+          <button
+            onClick={fetchEcosystemData}
+            className="w-full px-5 py-3 bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-500 hover:to-blue-400 text-white rounded-xl text-sm font-bold shadow-lg shadow-indigo-500/30 cursor-pointer transition-all flex items-center justify-center space-x-2"
+          >
+            <RefreshCw className="h-4 w-4" />
+            <span>Retry Server Synchronization</span>
+          </button>
+        </div>
       </div>
     );
   }
@@ -215,7 +230,8 @@ export default function App() {
   const isEmergencyActive = patient?.vitals.isEmergencyTriggered || patient?.vitals.isFallDetected;
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] text-slate-900 pb-16 relative" id="app-viewport">
+    <div className="min-h-screen text-slate-900 pb-20 relative" style={{background: 'linear-gradient(145deg, #eef2ff 0%, #f0f7ff 35%, #fafafa 70%, #f0fdf4 100%)'}} id="app-viewport">
+      <div className="fixed inset-0 bg-grid-pattern pointer-events-none" />
       
       {/* Universal Shared Header Switcher */}
       <Header
@@ -304,20 +320,22 @@ export default function App() {
         patient={patient}
       />
 
-      {/* Persistent ecosystem simulator control panel at the bottom center of screen */}
-      <footer className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white rounded-full px-5 py-2.5 shadow-xl border border-slate-800 flex items-center space-x-4 z-40 text-xs font-semibold backdrop-blur-md opacity-95">
-        <span className="flex items-center space-x-1.5 text-[10px] uppercase font-mono tracking-wider text-indigo-400">
-          <Activity className="h-3.5 w-3.5" />
-          <span>AI Health Companion Ecosystem Simulator</span>
-        </span>
-        <span className="text-slate-600">|</span>
+      {/* Persistent ecosystem simulator control panel */}
+      <footer className="fixed bottom-4 left-1/2 transform -translate-x-1/2 glass-dark rounded-2xl px-5 py-3 shadow-2xl shadow-black/20 flex items-center space-x-4 z-40 text-xs font-semibold border border-white/10" id="sim-footer">
+        <div className="flex items-center space-x-2">
+          <div className="p-1.5 bg-gradient-to-tr from-indigo-600 to-rose-500 rounded-lg">
+            <Activity className="h-3 w-3 text-white" />
+          </div>
+          <span className="text-[10px] uppercase font-mono tracking-widest text-indigo-400">AI Health Ecosystem Simulator</span>
+        </div>
+        <span className="text-slate-700">|</span>
         <button
           onClick={handleResetEcosystem}
-          className="text-slate-300 hover:text-white transition-all cursor-pointer font-mono text-[10px] uppercase tracking-wider flex items-center space-x-1"
+          className="flex items-center space-x-1.5 text-slate-400 hover:text-white transition-all cursor-pointer font-mono text-[10px] uppercase tracking-wider group"
           id="simulation-reset-btn"
         >
-          <RefreshCw className="h-3 w-3 animate-spin [animation-duration:6s]" />
-          <span>Reset Simulation State</span>
+          <RefreshCw className="h-3 w-3 group-hover:animate-spin" />
+          <span>Reset State</span>
         </button>
       </footer>
     </div>
