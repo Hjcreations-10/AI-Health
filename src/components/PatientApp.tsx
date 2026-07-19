@@ -204,8 +204,11 @@ export default function PatientApp({
       {/* LEFT PANEL: Patient Sidebar Overview */}
       <div className="lg:col-span-4 space-y-6">
         
+      {/* LEFT PANEL: Patient Sidebar Overview */}
+      <div className="lg:col-span-4 space-y-6">
+        
         {/* Profile Card & Language Selection */}
-        <div className="bg-white rounded-[32px] border border-slate-100 shadow-xl shadow-slate-200/50 p-6" id="patient-profile">
+        <div className="bg-white/80 backdrop-blur-md rounded-[32px] border border-slate-100/80 shadow-premium p-6 hover-lift" id="patient-profile">
           <div className="flex items-center space-x-4">
             <div className="h-14 w-14 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-lg border border-blue-200 shadow-xs">
               DP
@@ -259,7 +262,7 @@ export default function PatientApp({
                   key={lang.code}
                   id={`lang-select-${lang.code}`}
                   onClick={() => onChangeLanguage(lang.code)}
-                  className={`px-3 py-2 rounded-xl text-xs font-medium border text-left transition-all cursor-pointer ${
+                  className={`px-3 py-2 rounded-xl text-xs font-medium border text-left transition-all cursor-pointer hover-lift ${
                     currentLanguage.code === lang.code
                       ? 'bg-blue-50 text-blue-700 border-blue-200 font-semibold shadow-xs'
                       : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
@@ -276,7 +279,7 @@ export default function PatientApp({
         </div>
 
         {/* Emergency Alert & Call Caregiver */}
-        <div className="bg-gradient-to-br from-rose-50 to-rose-100 border border-rose-200 rounded-[32px] p-6 shadow-md shadow-rose-200/30" id="emergency-card">
+        <div className="bg-gradient-to-br from-rose-50/70 to-rose-100/70 backdrop-blur-md border border-rose-200/80 rounded-[32px] p-6 shadow-premium hover-lift glow-red" id="emergency-card">
           <div className="flex items-start space-x-3">
             <div className="p-2.5 bg-rose-500 text-white rounded-xl flex items-center justify-center shadow-sm">
               <AlertCircle className="h-5 w-5 animate-bounce" />
@@ -305,7 +308,7 @@ export default function PatientApp({
           <div className="mt-4 grid grid-cols-2 gap-2">
             <a 
               href={`tel:${patient.emergencyContactPhone}`}
-              className="py-2.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-xl shadow-xs transition-all flex items-center justify-center space-x-1.5 cursor-pointer"
+              className="py-2.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-xl shadow-xs transition-all flex items-center justify-center space-x-1.5 cursor-pointer hover-lift"
               id="call-caregiver-btn"
             >
               <Volume2 className="h-4 w-4" />
@@ -320,7 +323,7 @@ export default function PatientApp({
                 });
                 onRefreshData();
               }}
-              className="py-2.5 bg-slate-900 hover:bg-black text-white text-xs font-bold rounded-xl shadow-xs transition-all flex items-center justify-center space-x-1.5 cursor-pointer"
+              className="py-2.5 bg-slate-900 hover:bg-black text-white text-xs font-bold rounded-xl shadow-xs transition-all flex items-center justify-center space-x-1.5 cursor-pointer hover-lift"
               id="alert-vitals-btn"
             >
               <ShieldCheck className="h-4 w-4 text-rose-400" />
@@ -330,7 +333,7 @@ export default function PatientApp({
         </div>
 
         {/* Daily Adherence Metrics */}
-        <div className="bg-white rounded-[32px] border border-slate-100 p-6 shadow-xl shadow-slate-200/50 space-y-4">
+        <div className="bg-white/80 backdrop-blur-md rounded-[32px] border border-slate-100/80 p-6 shadow-premium space-y-4 hover-lift">
           <div className="flex justify-between items-center">
             <h4 className="font-display font-bold text-slate-800 text-sm">Today's Adherence Rate</h4>
             <span className="p-1 bg-emerald-50 text-emerald-600 rounded-md">
@@ -371,7 +374,7 @@ export default function PatientApp({
         </div>
 
         {/* Smartwatch Companion Sync */}
-        <div className="bg-white rounded-[32px] border border-slate-100 p-6 shadow-xl shadow-slate-200/50 space-y-3" id="mobile-watch-companion-sync">
+        <div className="bg-white/80 backdrop-blur-md rounded-[32px] border border-slate-100/80 p-6 shadow-premium space-y-3 hover-lift glow-blue" id="mobile-watch-companion-sync">
           <div className="flex justify-between items-center pb-2 border-b border-slate-50">
             <div className="flex items-center space-x-1.5">
               <span className="relative flex h-2 w-2">
