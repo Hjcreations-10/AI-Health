@@ -6,8 +6,8 @@
  */
 
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { store } from '../_store';
-import { INITIAL_PATIENT, INITIAL_PRESCRIPTIONS, INITIAL_ADHERENCE_LOGS } from '../../src/data';
+import { store } from './_store';
+import { INITIAL_PATIENT, INITIAL_PRESCRIPTIONS, INITIAL_ADHERENCE_LOGS } from '../src/data';
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {

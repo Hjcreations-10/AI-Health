@@ -6,7 +6,7 @@
  */
 
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { store } from '../../_store';
+import { store } from '../_store';
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === 'GET') {
