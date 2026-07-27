@@ -8,7 +8,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { store } from '../_store';
 import { chatWithGemini } from '../_gemini';
-import { ChatMessage } from '../../src/types';
+import type { ChatMessage } from '../_store';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
