@@ -7,9 +7,9 @@
  */
 
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { store } from '../_store';
-import { analyzeInteractionsWithGemini } from '../_gemini';
-import type { Medicine, Prescription } from '../_store';
+import { store } from '../_store.js';
+import { analyzeInteractionsWithGemini } from '../_gemini.js';
+import type { Medicine, Prescription } from '../_store.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === 'GET') {

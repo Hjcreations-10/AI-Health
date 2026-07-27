@@ -2,6 +2,7 @@
   "name": "react-example",
   "private": true,
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "server": "tsx server.ts",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"vite --port 5173\"",
