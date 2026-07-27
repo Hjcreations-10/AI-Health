@@ -6,7 +6,7 @@
  */
 
 import { GoogleGenAI } from '@google/genai';
-import type { Medicine } from './_store.js';
+import type { Medicine } from './_store';
 
 let _ai: GoogleGenAI | null = null;
 
