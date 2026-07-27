@@ -82,7 +82,7 @@ Keep your analysis extremely concise (under 120 words), direct, and focused on s
 
     try {
       const response = await ai.models.generateContent({
-        model: 'gemini-3.5-flash',
+        model: 'gemini-2.0-flash',
         contents: prompt,
       });
       return response.text || "No adverse drug interactions detected.";
@@ -113,7 +113,7 @@ Instructions:
 
     try {
       const response = await ai.models.generateContent({
-        model: 'gemini-3.5-flash',
+        model: 'gemini-2.0-flash',
         contents: prompt,
       });
       return response.text || `Explanation for ${medName} could not be generated.`;
@@ -139,7 +139,7 @@ Message to translate:
 
     try {
       const response = await ai.models.generateContent({
-        model: 'gemini-3.5-flash',
+        model: 'gemini-2.0-flash',
         contents: prompt,
       });
       return response.text ? response.text.trim() : text;
@@ -389,7 +389,7 @@ Role & Guidelines:
 5. Never output complex or diagnostic jargon. Keep sentences relatively short and easy to understand. Keep references to their current active drugs accurate.`;
 
         const response = await ai.models.generateContent({
-          model: 'gemini-3.5-flash',
+          model: 'gemini-2.0-flash',
           contents: prompt,
         });
 

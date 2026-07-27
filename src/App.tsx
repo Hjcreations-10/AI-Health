@@ -230,7 +230,7 @@ export default function App() {
   const isEmergencyActive = patient?.vitals.isEmergencyTriggered || patient?.vitals.isFallDetected;
 
   return (
-    <div className="min-h-screen text-slate-900 pb-20 relative" style={{background: 'linear-gradient(145deg, #eef2ff 0%, #f0f7ff 35%, #fafafa 70%, #f0fdf4 100%)'}} id="app-viewport">
+    <div className="min-h-screen text-slate-900 pb-20 relative bg-health-gradient" id="app-viewport">
       <div className="fixed inset-0 bg-grid-pattern pointer-events-none" />
       
       {/* Universal Shared Header Switcher */}
